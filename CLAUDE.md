@@ -21,6 +21,7 @@
 | `/pedagogy-review` | Revisão de narrativa, notação e pacing | Não |
 | `/validate-bib` | Validar referências cruzadas de citações | Não |
 | `/abstract-annotator` | Anotar abstract: 5 elementos essenciais + score + sugestões de corte | Não |
+| `/introduction-annotator` | Anotar introdução: elementos estruturais + Princípio da Pirâmide + coerência | Não |
 | **`/research-pipeline`** | **Pipeline automático: review → fix → review (agentes separados)** | **Sim** |
 
 *`/compile-rmd` gera arquivos de output mas não edita o .Rmd fonte.
