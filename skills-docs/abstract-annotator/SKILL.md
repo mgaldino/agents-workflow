@@ -165,6 +165,30 @@ Ordene da mais fácil/menos dolorosa para a mais difícil/mais custosa em termos
 [Se o score for ≤ 69, forneça um esboço de abstract reescrito que incorpore todas as recomendações acima. Isso serve como guia, não como texto final — o autor deve adaptar ao seu estilo.]
 ```
 
+## Exemplo de anotação (referência para o formato esperado)
+
+O abstract abaixo ilustra como cada frase pode mapear para um ou mais elementos. Use este nível de granularidade ao anotar.
+
+> **Abstract (fictício)**:
+>
+> "This study investigates how nonviolent protest strategies influence media framing and public opinion in democratic societies. Drawing on a novel dataset that combines daily protest activity, local media coverage, and county-level voting patterns, we address gaps in the existing literature on grassroots activism and elite communication. Using a difference-in-differences design complemented by instrumental variable techniques, our analysis establishes a causal link between protest events and subsequent shifts in media narratives. Our results indicate that nonviolent protests lead to more favorable media coverage and a measurable realignment in public opinion, whereas violent protests trigger adverse framing effects and polarization. These findings contribute to a more nuanced understanding of the interaction between social movements and political elites, challenging traditional models that downplay grassroots influence."
+
+**Anotação frase a frase**:
+
+| Frase | Elemento(s) | Anotação |
+|-------|-------------|----------|
+| "This study investigates how nonviolent protest strategies influence media framing and public opinion in democratic societies." | **Research Puzzle** | Introduz o problema de pesquisa ao declarar o que está sendo investigado (efeito de estratégias de protesto) e estabelece o contexto (sociedades democráticas). |
+| "Drawing on a novel dataset that combines daily protest activity, local media coverage, and county-level voting patterns, we address gaps in the existing literature on grassroots activism and elite communication." | **Empirical Approach** + **Research Puzzle** | Especifica as fontes de dados e sinaliza o gap de pesquisa que o estudo preenche, conectando a abordagem ao trabalho prévio. |
+| "Using a difference-in-differences design complemented by instrumental variable techniques, our analysis establishes a causal link between protest events and subsequent shifts in media narratives." | **Empirical Approach** | Descreve a abordagem metodológica e destaca a estratégia de identificação causal, enfatizando o rigor do estudo. |
+| "Our results indicate that nonviolent protests lead to more favorable media coverage and a measurable realignment in public opinion, whereas violent protests trigger adverse framing effects and polarization." | **Main Findings** | Sumariza os principais achados empíricos, delineando os impactos distintos de diferentes táticas de protesto. |
+| "These findings contribute to a more nuanced understanding of the interaction between social movements and political elites, challenging traditional models that downplay grassroots influence." | **Theoretical Contribution** + **Implications** | Discute a contribuição teórica e as implicações mais amplas do estudo para debates existentes. |
+
+**Score deste exemplo**: 100/100 — todos os 5 elementos presentes, bem escritos, e (assumindo coerência com o paper) sem deduções.
+
+**Nota**: Nem toda frase mapeia para exatamente um elemento. Frases podem cobrir múltiplos elementos simultaneamente (como a 2a e 5a frases acima). O importante é que TODOS os 5 elementos estejam presentes no abstract como um todo.
+
+---
+
 ## Regras
 
 - **NÃO edite o manuscrito original.** O relatório é salvo como arquivo separado.
