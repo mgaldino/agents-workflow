@@ -2,6 +2,18 @@
 
 Este guia é para quem não programa, mas precisa usar as skills no Codex.
 
+## Pasta certa no repositório
+
+Use somente:
+
+- `codex-agents/`
+
+Ignore para uso operacional:
+
+- `skills-docs/`
+- `rules-docs/`
+- outras pastas de documentação interna
+
 ## 1) Instalar
 
 Use o passo a passo do [README.md](README.md) para instalar as skills com um único prompt.

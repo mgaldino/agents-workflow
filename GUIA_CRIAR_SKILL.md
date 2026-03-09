@@ -2,6 +2,14 @@
 
 Guia prático para criar ou editar skills da equipe.
 
+## Pasta oficial de trabalho
+
+Crie e edite skills somente dentro de:
+
+- `codex-agents/skills/`
+
+Não use `skills-docs/` para operação da equipe. Essa pasta pode conter materiais de referência e não o pacote ativo de produção.
+
 ## 1) Convenção de nomes
 
 Use nomes mnemônicos curtos:
