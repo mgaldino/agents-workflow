@@ -1,0 +1,97 @@
+{
+  "expectations": [
+    {
+      "text": "Directory structure includes raw/, processed/, scripts/, and docs/ subdirectories",
+      "passed": true,
+      "evidence": "All four subdirectories exist in the outputs directory: raw/ (contains 2 JSON files), processed/ (contains painel_latam.csv), scripts/ (contains download_worldbank.py, process_worldbank.py, requirements.txt), docs/ (contains SOURCES.yaml, DATA_DICTIONARY.md). Confirmed via file listing."
+    },
+    {
+      "text": "A Python download script exists that targets the World Bank API",
+      "passed": true,
+      "evidence": "scripts/download_worldbank.py exists and is a substantive Python script (148 lines). It uses the World Bank API v2 at BASE_URL = 'https://api.worldbank.org/v2', fetches indicators NY.GDP.PCAP.CD and SP.POP.TOTL for 20 Latin American countries, handles pagination, implements retry with exponential backoff via requests.adapters.Retry, includes rate limiting (0.5s between pages), and saves raw JSON to the raw/ directory."
+    },
+    {
+      "text": "SOURCES.yaml exists and contains required fields: id, name, provider, url, license, date_accessed",
+      "passed": true,
+      "evidence": "docs/SOURCES.yaml exists with a single source entry containing all required fields: id: worldbank_wdi, name: 'World Development Indicators', provider: 'World Bank', url: 'https://databank.worldbank.org/source/world-development-indicators', license: 'CC BY-4.0', date_accessed: '2026-03-13'. Also includes additional fields: api_docs, access_method, requires_credentials, variables_used, temporal_coverage, geographic_coverage, unit_of_analysis, download_script, process_script, notes."
+    },
+    {
+      "text": "DATA_DICTIONARY.md exists and documents variables with type, description, and source linkage",
+      "passed": true,
+      "evidence": "docs/DATA_DICTIONARY.md exists and documents all 5 variables in the processed CSV (country_code, country_name, year, gdp_per_capita_current_usd, population_total). Each variable has columns for Tipo (type), Descricao (description), and Fonte (id) (source linkage). Source linkage references 'worldbank_wdi' which matches the id in SOURCES.yaml. Also includes notes on indicator definitions, missing value patterns, and a table of all 20 covered countries."
+    },
+    {
+      "text": "README.md contains step-by-step reproduction instructions",
+      "passed": true,
+      "evidence": "README.md contains a numbered 5-step reproduction guide under '## Como reproduzir a coleta': (1) Create and activate virtual environment, (2) Install dependencies via pip install -r scripts/requirements.txt, (3) Configure credentials (noted as optional for World Bank), (4) Execute scripts in order: python scripts/download_worldbank.py then python scripts/process_worldbank.py, (5) Verify integrity via sha256sum -c checksums.sha256. Each step includes runnable bash commands."
+    },
+    {
+      "text": ".gitignore exists and excludes .env",
+      "passed": true,
+      "evidence": ".gitignore exists with '.env' on line 2 under a '# Credenciais' header. Also excludes raw/*.json, raw/*.zip, raw/*.xlsx, Python cache files, OS files (.DS_Store, Thumbs.db), IDE files, and virtual environment directories."
+    },
+    {
+      "text": "requirements.txt lists Python dependencies",
+      "passed": true,
+      "evidence": "scripts/requirements.txt exists and lists 5 Python dependencies with version constraints: requests>=2.28.0, python-dotenv>=1.0.0, pandas>=1.5.0, tqdm>=4.64.0, wbgapi>=1.0.12. These align with the imports used in the download and processing scripts."
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "total_duration_seconds": 709.7
+  },
+  "claims": [
+    {
+      "claim": "The processed CSV contains 480 rows (20 countries x 24 years)",
+      "type": "factual",
+      "verified": true,
+      "evidence": "wc -l on painel_latam.csv returned 481 lines (480 data rows + 1 header), confirming 480 data rows. The CSV header is: country_code,country_name,year,gdp_per_capita_current_usd,population_total."
+    },
+    {
+      "claim": "Data was not actually downloaded from the API; sample data was generated",
+      "type": "process",
+      "verified": true,
+      "evidence": "Transcript explicitly states: 'Como nao foi possivel executar HTTP requests reais, criei: raw/: JSONs de amostra com formato identico ao retornado pela API do World Bank'. The raw JSON files contain only a subset of records (e.g., only 21 records in the GDP JSON for 6 countries with select years), not the full 480 records that a real API call would return."
+    },
+    {
+      "claim": "Missing values are included for Venezuela (post-2013) and Cuba (post-2021)",
+      "type": "factual",
+      "verified": false,
+      "evidence": "The raw JSON sample for Venezuela 2023 shows 'value': null, which is consistent. However, the processed CSV was generated separately (not by running the processing script on the raw JSONs), so the missing value patterns in the CSV cannot be confirmed as derived from the raw data. The claim is plausible but the data was fabricated, not downloaded."
+    },
+    {
+      "claim": "The download script implements retry with exponential backoff",
+      "type": "process",
+      "verified": true,
+      "evidence": "download_worldbank.py lines 63-74 create an HTTP session with Retry(total=5, backoff_factor=1.0, status_forcelist=[429, 500, 502, 503, 504]) mounted on both https:// and http:// adapters."
+    },
+    {
+      "claim": "The World Bank API does not require authentication",
+      "type": "factual",
+      "verified": true,
+      "evidence": "This is correct. The World Bank API v2 is publicly accessible without API keys. The script correctly does not include any authentication mechanism."
+    }
+  ],
+  "user_notes_summary": null,
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "A Python download script exists that targets the World Bank API",
+        "reason": "This assertion checks that the script exists and targets the right API, but does not verify that the script actually runs successfully. The transcript admits HTTP requests were not executed. Consider adding an assertion like 'The download script executes without errors when run against the real API' or at minimum 'The script is syntactically valid Python (passes python -c import)' to catch non-functional scripts."
+      },
+      {
+        "reason": "No assertion verifies that the processed CSV contains real (or at least plausible) data. The 480-row CSV was fabricated rather than produced by the pipeline. An assertion checking that the scripts can run end-to-end and produce output from the API would be more discriminating."
+      },
+      {
+        "assertion": "SOURCES.yaml exists and contains required fields: id, name, provider, url, license, date_accessed",
+        "reason": "This checks field presence but not correctness. A SOURCES.yaml with id: 'foo', name: 'bar', provider: 'baz' would also pass. Consider checking that the url is a valid URL and that the provider matches a known data source."
+      }
+    ],
+    "overall": "All 7 assertions pass, and the outputs are genuinely substantive -- not just surface-level compliance. However, the assertions primarily check file existence and field presence, not functional correctness. The most important gap is that no assertion verifies the pipeline actually runs end-to-end. The data was fabricated (transcript admits this), yet all assertions pass. A 'scripts execute successfully' assertion would be the single most discriminating addition."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "eval_id": 1,
+  "eval_name": "eval-1-war-responsibility",
+  "prompt": "Avalie este paper com modelo formal: /Users/manoelgaldino/Documents/DCP/Papers/war-and-responsibility.pdf",
+  "skill": "review-formal-model",
+  "assertions": [
+    {"id": "A1", "text": "Output contains editorial letter section (Carta Editorial or Editorial Letter)", "type": "string_match"},
+    {"id": "A2", "text": "Output contains 3 separate reports: Design, Technical Presentation, Exposition", "type": "structural"},
+    {"id": "A3", "text": "Output contains consolidated scores table with numeric scores", "type": "structural"},
+    {"id": "A4", "text": "Output contains editorial decision (Rejeitar/R&R/Aceitar or equivalent)", "type": "string_match"},
+    {"id": "A5", "text": "Correctly identifies the model as game-theoretic focusing on Loss Responsibility Costs / blame avoidance in war powers", "type": "content"},
+    {"id": "A6", "text": "References methodological literature (Thomson, Board, Dixit, or Varian)", "type": "string_match"},
+    {"id": "A7", "text": "Contains constructive suggestions section with specific actionable items", "type": "content"},
+    {"id": "A8", "text": "Mentions specific elements of the paper (proposition names, section numbers, variable names)", "type": "content"}
+  ]
+}

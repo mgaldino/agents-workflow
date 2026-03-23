@@ -1,0 +1,104 @@
+===========================================================================
+CODEBOOK: Latin America GDP per Capita & Population Panel (2000-2023)
+===========================================================================
+
+SOURCE
+------
+World Bank - World Development Indicators (WDI)
+URL: https://databank.worldbank.org/source/world-development-indicators
+API: https://api.worldbank.org/v2/
+
+INDICATORS
+----------
+1. NY.GDP.PCAP.CD  ->  gdp_per_capita_current_usd
+   Definition: GDP per capita is gross domestic product divided by midyear
+   population. GDP is the sum of gross value added by all resident producers
+   in the economy plus any product taxes and minus any subsidies not included
+   in the value of the products. It is calculated without making deductions
+   for depreciation of fabricated assets or for depletion and degradation of
+   natural resources. Data are in current U.S. dollars.
+   Unit: current US$
+
+2. SP.POP.TOTL  ->  population
+   Definition: Total population is based on the de facto definition of
+   population, which counts all residents regardless of legal status or
+   citizenship. The values shown are midyear estimates.
+   Unit: persons
+
+COVERAGE
+--------
+- Time: 2000-2023 (24 years)
+- Countries: 20 Latin American countries (see list below)
+- Expected observations: 20 countries x 24 years = 480 rows (long format)
+
+COUNTRIES (ISO-3 / ISO-2 / Name)
+---------------------------------
+ARG / AR / Argentina
+BOL / BO / Bolivia
+BRA / BR / Brazil
+CHL / CL / Chile
+COL / CO / Colombia
+CRI / CR / Costa Rica
+CUB / CU / Cuba
+DOM / DO / Dominican Republic
+ECU / EC / Ecuador
+SLV / SV / El Salvador
+GTM / GT / Guatemala
+HTI / HT / Haiti
+HND / HN / Honduras
+MEX / MX / Mexico
+NIC / NI / Nicaragua
+PAN / PA / Panama
+PRY / PY / Paraguay
+PER / PE / Peru
+URY / UY / Uruguay
+VEN / VE / Venezuela
+
+FILE DESCRIPTIONS
+-----------------
+1. latam_gdp_pcap_population_panel.csv  (main output, long format)
+   Columns:
+     - iso3                         : ISO 3166-1 alpha-3 country code
+     - country_name                 : Country name (English)
+     - year                         : Calendar year (integer)
+     - gdp_per_capita_current_usd   : GDP per capita in current US$ (float)
+     - population                   : Total population (integer)
+
+2. latam_gdp_pcap_wide.csv  (GDP per capita, wide format)
+   Rows: countries (iso3, country_name)
+   Columns: gdp_pcap_2000, gdp_pcap_2001, ..., gdp_pcap_2023
+
+3. latam_population_wide.csv  (Population, wide format)
+   Rows: countries (iso3, country_name)
+   Columns: pop_2000, pop_2001, ..., pop_2023
+
+NOTES & CAVEATS
+---------------
+- Venezuela: GDP data may be unreliable for recent years due to economic
+  crisis and reporting gaps. The World Bank stopped publishing some
+  Venezuelan indicators around 2014-2018.
+- Cuba: GDP data uses official exchange rates, which may not reflect
+  purchasing power accurately.
+- Missing values: Some country-year combinations may have NA values,
+  particularly for Cuba and Venezuela in recent years.
+- Currency: GDP per capita is in CURRENT US dollars (not constant/real).
+  For time-series comparisons, consider using NY.GDP.PCAP.KD (constant
+  2015 US$) or NY.GDP.PCAP.PP.KD (PPP, constant international $).
+
+ALTERNATIVE INDICATORS (for future consideration)
+--------------------------------------------------
+- NY.GDP.PCAP.KD      : GDP per capita (constant 2015 US$)
+- NY.GDP.PCAP.PP.CD   : GDP per capita, PPP (current international $)
+- NY.GDP.PCAP.PP.KD   : GDP per capita, PPP (constant 2021 international $)
+- NY.GDP.MKTP.CD      : GDP (current US$) -- total, not per capita
+
+SCRIPTS
+-------
+- download_wb_data.py  : Python script using wbgapi package
+- download_wb_data.R   : R script using WDI package
+- validate_data.py     : Validation/quality checks
+
+LAST UPDATED
+------------
+Intended download date: 2026-03-13
+Data vintage: World Bank WDI (latest available release at time of download)

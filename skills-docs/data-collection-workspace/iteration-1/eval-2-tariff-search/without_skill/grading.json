@@ -1,0 +1,110 @@
+{
+  "expectations": [
+    {
+      "text": "At least 2 alternative data sources are presented with pros/cons or ranking",
+      "passed": true,
+      "evidence": "README_data_sources.md presents sources in three tiers with clear pros/cons. Tier 1 includes: (1) World Bank WDI -- 'Easiest to access programmatically' but 'Only aggregate (all products)'; (2) WITS/UNCTAD TRAINS -- 'Most granular tariff data available' but 'API has query size limits'; (3) WTO TTD -- 'Official WTO data' but 'Less convenient for programmatic access'. Tier 2 covers Harvard Dataverse replication datasets. Tier 3 covers supplementary sources (Our World in Data, OECD Data Explorer). Well over 2 alternatives with explicit trade-offs."
+    },
+    {
+      "text": "A Python download script exists for the recommended primary source",
+      "passed": true,
+      "evidence": "download_wdi_tariffs.py is a complete, well-structured Python script for the recommended primary source (World Bank WDI). It defines 31 OECD country ISO2 codes, 4 tariff indicators, uses the World Bank API v2 with pagination, error handling, rate limiting (time.sleep), and outputs both wide and long format CSVs. The README recommends WDI as the primary source ('Start with World Bank WDI') and download_wdi_tariffs.py is the corresponding script. Additional scripts exist for WITS and WTO sources."
+    },
+    {
+      "text": "SOURCES.yaml exists and contains required fields: id, name, provider, url, license, date_accessed",
+      "passed": false,
+      "evidence": "No SOURCES.yaml file exists in the outputs directory. The glob search returned no matches. Source information is instead documented in README_data_sources.md as prose, which includes URLs and provider names but not in the structured YAML format with the required fields (id, name, provider, url, license, date_accessed). Notably, license information and date_accessed are absent from the documentation entirely."
+    },
+    {
+      "text": "DATA_DICTIONARY.md exists and documents tariff-related variables",
+      "passed": false,
+      "evidence": "No file named DATA_DICTIONARY.md exists in the outputs directory. The glob search returned no matches. However, a file named codebook.md exists and documents tariff-related variables in a table with columns Variable, Type, and Description -- covering country_code, country_name, year, tariff_weighted_mean_all_products, tariff_simple_mean_all_products, tariff_weighted_mean_manufactured, and tariff_weighted_mean_primary. The content is substantive but the filename does not match the expectation."
+    },
+    {
+      "text": "README.md contains reproduction instructions",
+      "passed": false,
+      "evidence": "No file named README.md exists in the outputs directory. A file named README_data_sources.md exists, but it focuses on describing data sources rather than providing reproduction instructions. The download scripts themselves contain usage instructions in their docstrings (e.g., download_wdi_tariffs.py says 'pip install requests pandas' and 'python download_wdi_tariffs.py'), but there is no centralized README.md with step-by-step reproduction instructions."
+    },
+    {
+      "text": "If any source requires credentials, .env.example documents how to obtain them",
+      "passed": false,
+      "evidence": "No .env.example file exists. The transcript and README_data_sources.md note that 'WITS website registration required' and 'API is open'. The WITS download script uses the world_trade_data package which may require registration for certain endpoints. The Harvard Dataverse script uses an API that can work without a key but has rate limits without one. Despite multiple sources mentioning access requirements, no .env.example was created. While the WDI primary source needs no credentials, the WITS source (Tier 1 #2) notes 'registration required for WITS website' without documenting how to handle credentials."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 4,
+    "total": 6,
+    "pass_rate": 0.33
+  },
+  "timing": {
+    "total_duration_seconds": 671.3,
+    "total_tokens": 41329
+  },
+  "claims": [
+    {
+      "claim": "Harvard Dataverse does NOT have a single, canonical OECD tariff panel dataset for 2000-2010",
+      "type": "factual",
+      "verified": "unverifiable",
+      "evidence": "The transcript reports searching Harvard Dataverse and finding only replication packages, not standalone tariff panels. This is plausible but cannot be independently verified from the outputs alone."
+    },
+    {
+      "claim": "World Bank WDI API requires no authentication",
+      "type": "factual",
+      "verified": true,
+      "evidence": "The download_wdi_tariffs.py script makes direct requests to api.worldbank.org without any API key or authentication headers. This is consistent with known World Bank API behavior."
+    },
+    {
+      "claim": "Sample CSV contains 9 countries x 11 years with 4 tariff indicators",
+      "type": "factual",
+      "verified": true,
+      "evidence": "The sample CSV contains data for AUS, AUT, CAN, DEU, FRA, JPN, KOR, MEX, USA, GBR (10 countries, not 9 as claimed in the transcript) x 11 years (2000-2010) with 4 indicator columns. The transcript claim of '9 countries' is slightly inaccurate -- there are actually 10."
+    },
+    {
+      "claim": "OECD had 31 members as of 2010",
+      "type": "factual",
+      "verified": false,
+      "evidence": "The script lists 31 countries including Chile (joined May 2010). As of end-2010, OECD had 34 members (Israel, Estonia, and Slovenia also joined in 2010). The list is incomplete -- it omits Israel (joined Sep 2010), Estonia (joined Dec 2010), and Slovenia (joined Jul 2010)."
+    },
+    {
+      "claim": "The sample CSV data is mock/sample data showing expected output format",
+      "type": "quality",
+      "verified": true,
+      "evidence": "The transcript explicitly calls it 'Mock/sample data file'. Inspection confirms this: EU countries (AUT, DEU, FRA, GBR) all have identical tariff values for every year, and all countries show perfectly monotonic decreasing trends with suspiciously round decrements -- clearly fabricated data, not real WDI data."
+    },
+    {
+      "claim": "19 of 31 OECD members are EU members sharing a Common External Tariff",
+      "type": "factual",
+      "verified": "partially",
+      "evidence": "The codebook lists 19 EU members. This count is reasonable for the 2000-2010 period, though membership changed during this period (e.g., Czech Republic, Hungary, Poland, Slovak Republic joined the EU in 2004)."
+    }
+  ],
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [],
+    "workarounds": []
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "SOURCES.yaml exists and contains required fields: id, name, provider, url, license, date_accessed",
+        "reason": "The executor created equivalent content in a different format (README_data_sources.md). Consider testing for structured source metadata in any machine-readable format (YAML, JSON, CSV), or explicitly instruct the task prompt to require SOURCES.yaml. As-is, the expectation tests adherence to a specific file convention that was never communicated in the task."
+      },
+      {
+        "assertion": "DATA_DICTIONARY.md exists and documents tariff-related variables",
+        "reason": "Same issue: the executor created codebook.md with substantive variable documentation. The expectation tests a specific filename convention. Either the task prompt should specify the filename, or the expectation should accept any data dictionary file."
+      },
+      {
+        "assertion": "If any source requires credentials, .env.example documents how to obtain them",
+        "reason": "This is a conditional assertion that is hard to grade. The primary recommended source (WDI) needs no credentials, but secondary sources (WITS) mention registration. It's ambiguous whether this expectation should apply. Consider making it unconditional ('if scripts reference any authenticated API, .env.example must exist') or explicitly tie it to the primary download script."
+      },
+      {
+        "reason": "No assertion checks whether the download script actually works (e.g., a dry-run test or response format validation). The WDI script looks correct, but the WTO script uses a speculative API endpoint (https://ttd.wto.org/api/tariff-summary) that likely does not exist. An assertion testing script executability would catch this."
+      },
+      {
+        "reason": "No assertion checks data quality of the sample output. The sample CSV contains obviously fabricated data (identical values for all EU countries, perfectly linear trends). While labeled as mock data, a real evaluation should verify either that the script was actually run against the API, or that sample data is flagged as synthetic."
+      }
+    ],
+    "overall": "Three of six assertions test specific filenames (SOURCES.yaml, DATA_DICTIONARY.md, README.md) that were never specified in the task prompt. The executor produced substantive equivalents under different names. This makes the eval test convention adherence rather than task quality. The two passing assertions (alternative sources with pros/cons, Python download script) are strong and discriminating. Adding assertions for script correctness and data authenticity would improve the eval."
+  }
+}

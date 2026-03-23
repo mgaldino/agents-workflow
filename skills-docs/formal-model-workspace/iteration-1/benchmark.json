@@ -1,0 +1,144 @@
+{
+  "metadata": {
+    "skill_name": "formal-model-skills",
+    "skill_path": "~/.claude/skills/formal-model-*",
+    "executor_model": "claude-opus-4-6",
+    "analyzer_model": "claude-opus-4-6",
+    "timestamp": "2026-03-13T16:05:16Z",
+    "evals_run": ["eval-1-war-responsibility", "eval-2-candidate-ranking", "eval-3-misinformation-design"],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "run_id": "eval-1-war-responsibility-with_skill",
+      "eval_name": "eval-1-war-responsibility",
+      "configuration": "with_skill",
+      "pass_rate": 1.0,
+      "total_tokens": 51617,
+      "total_duration_seconds": 234.7,
+      "expectations": [
+        {"text": "Output contains editorial letter section", "passed": true, "evidence": "Opens with '# Editorial Letter -- Formal Model Review'"},
+        {"text": "Output contains 3 separate reports", "passed": true, "evidence": "Full Report -- Model Design, Technical Presentation, Exposition"},
+        {"text": "Output contains consolidated scores table", "passed": true, "evidence": "Table: Design 8/10, Technical 7/10, Exposition 8/10, Global 8/10"},
+        {"text": "Output contains editorial decision", "passed": true, "evidence": "Decision: Accept"},
+        {"text": "Identifies model type correctly", "passed": true, "evidence": "Loss Responsibility Costs, blame avoidance"},
+        {"text": "References methodology literature", "passed": true, "evidence": "Thomson, Board, Dixit, Varian cited throughout"},
+        {"text": "Constructive suggestions present", "passed": true, "evidence": "4-5 specific items per report"},
+        {"text": "Paper-specific references", "passed": true, "evidence": "Hypothesis 1, 2a, 2b, Models I/II, beta, k, Figures 1-9"}
+      ]
+    },
+    {
+      "run_id": "eval-1-war-responsibility-without_skill",
+      "eval_name": "eval-1-war-responsibility",
+      "configuration": "without_skill",
+      "pass_rate": 0.5,
+      "total_tokens": 42489,
+      "total_duration_seconds": 164.9,
+      "expectations": [
+        {"text": "Output contains editorial letter section", "passed": false, "evidence": "Uses generic 'Formal Model Review' format"},
+        {"text": "Output contains 3 separate reports", "passed": false, "evidence": "Has sections but not 3 formal reports"},
+        {"text": "Output contains consolidated scores table", "passed": true, "evidence": "Scores table with 9 dimensions"},
+        {"text": "Output contains editorial decision", "passed": false, "evidence": "Has Verdict but no formal decision"},
+        {"text": "Identifies model type correctly", "passed": true, "evidence": "LRCs, blame avoidance identified"},
+        {"text": "References methodology literature", "passed": false, "evidence": "No Thomson/Board/Dixit/Varian"},
+        {"text": "Constructive suggestions present", "passed": true, "evidence": "7 specific suggestions"},
+        {"text": "Paper-specific references", "passed": true, "evidence": "Hypothesis 1, 2a, 2b, Models I/II"}
+      ]
+    },
+    {
+      "run_id": "eval-2-candidate-ranking-with_skill",
+      "eval_name": "eval-2-candidate-ranking",
+      "configuration": "with_skill",
+      "pass_rate": 1.0,
+      "total_tokens": 44114,
+      "total_duration_seconds": 259.2,
+      "expectations": [
+        {"text": "Output contains editorial letter section", "passed": true, "evidence": "Editorial Letter -- Formal Model Review"},
+        {"text": "Output contains 3 separate reports", "passed": true, "evidence": "All 3 reports present"},
+        {"text": "Output contains consolidated scores table", "passed": true, "evidence": "Design 7, Technical 7, Exposition 7, Global 7"},
+        {"text": "Output contains editorial decision", "passed": true, "evidence": "Decision: R&R minor"},
+        {"text": "Identifies Tullock contest model", "passed": true, "evidence": "Team Tullock contest, hump-shaped incentives"},
+        {"text": "References methodology literature", "passed": true, "evidence": "Thomson, Board, Dixit, Varian cited"},
+        {"text": "Constructive suggestions present", "passed": true, "evidence": "Multiple suggestion sections"},
+        {"text": "Discusses extensions", "passed": true, "evidence": "Exposure, incumbency, parties discussed"}
+      ]
+    },
+    {
+      "run_id": "eval-2-candidate-ranking-without_skill",
+      "eval_name": "eval-2-candidate-ranking",
+      "configuration": "without_skill",
+      "pass_rate": 0.5,
+      "total_tokens": 36272,
+      "total_duration_seconds": 135.5,
+      "expectations": [
+        {"text": "Output contains editorial letter section", "passed": false, "evidence": "Uses Referee Report format"},
+        {"text": "Output contains 3 separate reports", "passed": false, "evidence": "Numbered sections, not formal reports"},
+        {"text": "Output contains consolidated scores table", "passed": true, "evidence": "Scores table present"},
+        {"text": "Output contains editorial decision", "passed": false, "evidence": "Recommendation but no decision"},
+        {"text": "Identifies Tullock contest model", "passed": true, "evidence": "Tullock contest, bell-shaped incentives"},
+        {"text": "References methodology literature", "passed": false, "evidence": "No Thomson/Board/Dixit/Varian"},
+        {"text": "Constructive suggestions present", "passed": true, "evidence": "Suggestions throughout"},
+        {"text": "Discusses extensions", "passed": true, "evidence": "Exposure, incumbency, parties"}
+      ]
+    },
+    {
+      "run_id": "eval-3-misinformation-with_skill",
+      "eval_name": "eval-3-misinformation-design",
+      "configuration": "with_skill",
+      "pass_rate": 1.0,
+      "total_tokens": 48399,
+      "total_duration_seconds": 142.6,
+      "expectations": [
+        {"text": "Follows Parecer de Design format", "passed": true, "evidence": "Parecer de Design do Modelo (Dixit / Varian / Board)"},
+        {"text": "Contains all 6 dimensions MD1-MD6", "passed": true, "evidence": "MD1-MD6 all present"},
+        {"text": "Contains numeric score", "passed": true, "evidence": "Score: 8"},
+        {"text": "Identifies mechanism", "passed": true, "evidence": "Discipline/circulation tradeoff, strategic complementarities"},
+        {"text": "Board taxonomy classification", "passed": true, "evidence": "New model / New lens"},
+        {"text": "References Dixit/Varian/Board", "passed": true, "evidence": "Cited throughout"},
+        {"text": "One-sentence model description", "passed": true, "evidence": "O modelo em uma frase section present"}
+      ]
+    },
+    {
+      "run_id": "eval-3-misinformation-without_skill",
+      "eval_name": "eval-3-misinformation-design",
+      "configuration": "without_skill",
+      "pass_rate": 0.286,
+      "total_tokens": 46207,
+      "total_duration_seconds": 163.9,
+      "expectations": [
+        {"text": "Follows Parecer de Design format", "passed": false, "evidence": "Generic Review of Model Design format"},
+        {"text": "Contains all 6 dimensions MD1-MD6", "passed": false, "evidence": "6 sections but numbered 1-6, not MD1-MD6"},
+        {"text": "Contains numeric score", "passed": true, "evidence": "Overall Score: 9/10"},
+        {"text": "Identifies mechanism", "passed": true, "evidence": "Discipline/circulation tradeoff identified"},
+        {"text": "Board taxonomy classification", "passed": false, "evidence": "General taxonomy, not Board categories"},
+        {"text": "References Dixit/Varian/Board", "passed": false, "evidence": "No methodology references"},
+        {"text": "One-sentence model description", "passed": false, "evidence": "No dedicated section"}
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate_mean": 1.0,
+      "pass_rate_std": 0.0,
+      "tokens_mean": 48043,
+      "time_mean_seconds": 212.2
+    },
+    "without_skill": {
+      "pass_rate_mean": 0.429,
+      "pass_rate_std": 0.124,
+      "tokens_mean": 41656,
+      "time_mean_seconds": 154.8
+    },
+    "delta": {
+      "pass_rate": "+0.571",
+      "time_seconds": "+57.4",
+      "tokens": "+6387"
+    }
+  },
+  "notes": [
+    "With-skill: 100% pass rate. Baseline: 43%. Delta: +57pp.",
+    "Skill value is primarily STRUCTURAL (format, methodology refs, editorial decision). Content quality is comparable.",
+    "Orchestrator skill failed to launch sub-agents (no Task/Agent tool in subagent env) — did inline evaluation instead.",
+    "With-skill uses ~15% more tokens and ~37% more time — reasonable overhead for structured output."
+  ]
+}

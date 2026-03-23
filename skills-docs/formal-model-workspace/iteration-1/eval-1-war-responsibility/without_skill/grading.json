@@ -1,0 +1,15 @@
+{
+  "eval_id": 1,
+  "run_type": "without_skill",
+  "pass_rate": 0.5,
+  "expectations": [
+    {"text": "Output contains editorial letter section", "passed": false, "evidence": "Uses '# Formal Model Review' — no editorial letter format"},
+    {"text": "Output contains 3 separate reports (Design, Technical, Exposition)", "passed": false, "evidence": "Has sections (II. Evaluation, III. Technical, IV. Exposition) but not 3 distinct formal reports with separate scores"},
+    {"text": "Output contains consolidated scores table with numeric scores", "passed": true, "evidence": "Has 'V. Overall Assessment' with scores table (9 dimensions scored 1-10)"},
+    {"text": "Output contains editorial decision", "passed": false, "evidence": "Has 'Verdict' paragraph but no explicit editorial decision (Rejeitar/R&R/Aceitar)"},
+    {"text": "Correctly identifies model type (LRC / blame avoidance)", "passed": true, "evidence": "Correctly identifies LRCs, blame avoidance, crisis bargaining framework"},
+    {"text": "References methodological literature (Thomson/Board/Dixit/Varian)", "passed": false, "evidence": "No references to Thomson, Board, Dixit, or Varian as evaluation frameworks"},
+    {"text": "Contains constructive suggestions with specific items", "passed": true, "evidence": "'Principal Constructive Suggestions' with 7 specific, actionable items"},
+    {"text": "Mentions specific paper elements (propositions, sections, variables)", "passed": true, "evidence": "References Hypothesis 1, 2a, 2b, Models I/II, beta, Figure 1, Congressional Support Scores, Tullock contest"}
+  ]
+}

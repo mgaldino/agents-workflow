@@ -1,0 +1,22 @@
+[
+  {"query": "Preciso montar um painel de dados sobre gastos militares de países da OTAN entre 2005 e 2020. Me ajuda a achar a melhor base e baixar os dados?", "should_trigger": true},
+  {"query": "Quero dados de votação na Assembleia Geral da ONU, acho que tem um dataset famoso sobre isso. Preciso de um script que baixe automaticamente e documente tudo certinho pra replicação.", "should_trigger": true},
+  {"query": "to tentando acessar a API do IBGE pra puxar dados do censo por município, mas não sei como configurar a autenticação. Pode me ajudar a montar o pipeline?", "should_trigger": true},
+  {"query": "Existe alguma base de dados com informações sobre acordos de livre comércio (PTAs) que cubra América Latina? Preciso de algo que eu consiga baixar programaticamente e que tenha boa cobertura temporal.", "should_trigger": true},
+  {"query": "Preciso baixar os dados de replicação de um paper do Dataverse (doi:10.7910/DVN/LEJUQZ) e organizar pra usar no meu projeto. O dataset é grande, quase 2GB.", "should_trigger": true},
+  {"query": "Meu orientador pediu pra eu coletar dados do V-Dem, Polity e Freedom House e criar um dataset unificado de democracia. São 3 fontes diferentes que preciso mergear por country-year.", "should_trigger": true},
+  {"query": "preciso raspar os dados de licitações do portal de transparência do governo federal, o site não tem API mas os dados tão em tabelas HTML. como faço?", "should_trigger": true},
+  {"query": "Quero montar uma base com dados de comércio bilateral do UN Comtrade pra minha tese, mas preciso de credenciais pra API deles. Como configuro isso de forma segura?", "should_trigger": true},
+  {"query": "Tenho que baixar dados de PIB, inflação e câmbio do Banco Central (SGS) pra vários países e vários anos. Quero que fique tudo documentado e reproduzível.", "should_trigger": true},
+  {"query": "Preciso achar dados sobre sanções econômicas internacionais. Não sei nem por onde começar — que bases existem e como acesso?", "should_trigger": true},
+  {"query": "Já tenho o CSV com os dados carregado no pandas. Quero rodar uma regressão com efeitos fixos de país e ano, usando pyfixest. O outcome é gdp_growth e o treatment é trade_openness.", "should_trigger": false},
+  {"query": "Pode revisar o meu paper? Tá no arquivo paper_draft.Rmd. Quero feedback sobre a contribuição e a exposição do argumento.", "should_trigger": false},
+  {"query": "Preciso fazer uns gráficos bonitos com matplotlib pra apresentação de amanhã. Tenho os dados em data/processed/painel.csv e quero scatter plots com linhas de tendência.", "should_trigger": false},
+  {"query": "Me ajuda a escrever a seção de metodologia do paper? Estou usando difference-in-differences com treatment staggered e preciso justificar a identificação.", "should_trigger": false},
+  {"query": "O meu código R tá dando erro no merge de dois dataframes. O left_join tá duplicando linhas e não sei por quê. Os dados já estão baixados, o problema é no processamento.", "should_trigger": false},
+  {"query": "Quero compilar meu RMarkdown pra PDF mas tá dando erro no tinytex. O arquivo é presentation/slides.Rmd.", "should_trigger": false},
+  {"query": "Preciso criar um modelo formal de barganha entre dois países sobre tarifas. Quero um jogo de informação incompleta com equilíbrio bayesiano perfeito.", "should_trigger": false},
+  {"query": "Pode fazer uma revisão de literatura sobre o efeito de instituições no crescimento econômico? Quero identificar os gaps na literatura e possíveis contribuições.", "should_trigger": false},
+  {"query": "Tenho uma tabela de resultados pronta e quero formatar ela pro padrão de publicação, tipo stargazer ou modelsummary. Os modelos já estão estimados.", "should_trigger": false},
+  {"query": "Quero fazer deploy do meu site com os resultados da pesquisa pro GitHub Pages. O conteúdo já tá pronto em docs/.", "should_trigger": false}
+]

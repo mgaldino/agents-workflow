@@ -1,0 +1,15 @@
+{
+  "eval_id": 3,
+  "eval_name": "eval-3-misinformation-design",
+  "prompt": "Avalie o design do modelo formal neste paper: /Users/manoelgaldino/Documents/DCP/Papers/rdad111.pdf",
+  "skill": "formal-model-design",
+  "assertions": [
+    {"id": "B1", "text": "Output follows the Parecer de Design do Modelo format", "type": "structural"},
+    {"id": "B2", "text": "Contains evaluation of all 6 dimensions (MD1 through MD6)", "type": "structural"},
+    {"id": "B3", "text": "Contains a numeric score 1-10", "type": "string_match"},
+    {"id": "B4", "text": "Identifies strategic complementarities and Bayesian-Nash equilibria as central mechanism", "type": "content"},
+    {"id": "B5", "text": "Classifies contribution type according to Board & Meyer-ter-Vehn categories", "type": "content"},
+    {"id": "B6", "text": "References Dixit, Varian, or Board & Meyer-ter-Vehn", "type": "string_match"},
+    {"id": "B7", "text": "Contains one-sentence model description (O modelo em uma frase)", "type": "structural"}
+  ]
+}

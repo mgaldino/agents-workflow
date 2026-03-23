@@ -1,0 +1,51 @@
+variable,description,source,type,range_or_values,notes
+iso3_o,Origin country ISO 3166-1 alpha-3 code,CEPII Gravity,string,e.g. USA BRA DEU,
+iso3_d,Destination country ISO 3166-1 alpha-3 code,CEPII Gravity,string,e.g. USA BRA DEU,
+year,Year of observation,Both,integer,1990-2020,
+tradeflow_baci,"Bilateral trade flow from BACI (CEPII cleaned Comtrade), thousands USD",CEPII Gravity,float,>=0,Preferred trade measure
+tradeflow_comtrade_o,"Trade flow reported by origin country, thousands USD",CEPII Gravity,float,>=0,
+tradeflow_comtrade_d,"Trade flow reported by destination country, thousands USD",CEPII Gravity,float,>=0,
+trade_flow,"Unified trade flow (BACI > Comtrade_o > Comtrade_d > IMF), thousands USD",Derived,float,>=0,Best available trade measure
+distw,"Population-weighted bilateral distance, km",CEPII Gravity,float,>0,Standard gravity distance
+dist,"Simple distance between main cities/capitals, km",CEPII Gravity,float,>0,
+contig,Contiguity: shared land border,CEPII Gravity,binary,0 or 1,
+comlang_off,Common official primary language,CEPII Gravity,binary,0 or 1,
+comlang_ethno,Common language spoken by >= 9% of population,CEPII Gravity,binary,0 or 1,
+colony,Pair ever in colonial relationship,CEPII Gravity,binary,0 or 1,
+comcol,Common colonizer post-1945,CEPII Gravity,binary,0 or 1,
+rta,Regional trade agreement in force,CEPII Gravity,binary,0 or 1,
+gdp_o,"GDP of origin, millions current USD",CEPII Gravity,float,>0,
+gdp_d,"GDP of destination, millions current USD",CEPII Gravity,float,>0,
+gdpcap_o,"GDP per capita of origin, current USD",CEPII Gravity,float,>0,
+gdpcap_d,"GDP per capita of destination, current USD",CEPII Gravity,float,>0,
+pop_o,Population of origin,CEPII Gravity,integer,>0,
+pop_d,Population of destination,CEPII Gravity,integer,>0,
+v2x_polyarchy_o,Electoral Democracy Index - origin country,V-Dem,float,0-1,"Dahl's polyarchy concept: elected officials, free/fair elections, freedom of expression, associational autonomy, inclusive citizenship"
+v2x_polyarchy_d,Electoral Democracy Index - destination country,V-Dem,float,0-1,Same as above for destination
+v2x_libdem_o,Liberal Democracy Index - origin country,V-Dem,float,0-1,"Polyarchy + liberal component (rule of law, judicial/legislative constraints)"
+v2x_libdem_d,Liberal Democracy Index - destination country,V-Dem,float,0-1,Same as above for destination
+v2x_partipdem_o,Participatory Democracy Index - origin,V-Dem,float,0-1,"Polyarchy + civil society participation, direct democracy"
+v2x_partipdem_d,Participatory Democracy Index - destination,V-Dem,float,0-1,
+v2x_delibdem_o,Deliberative Democracy Index - origin,V-Dem,float,0-1,"Polyarchy + reasoned justification, common good"
+v2x_delibdem_d,Deliberative Democracy Index - destination,V-Dem,float,0-1,
+v2x_egaldem_o,Egalitarian Democracy Index - origin,V-Dem,float,0-1,"Polyarchy + equal protection, distribution, participation across groups"
+v2x_egaldem_d,Egalitarian Democracy Index - destination,V-Dem,float,0-1,
+v2x_freexp_altinf_o,Freedom of Expression and Alt. Sources of Info - origin,V-Dem,float,0-1,
+v2x_freexp_altinf_d,Freedom of Expression and Alt. Sources of Info - dest,V-Dem,float,0-1,
+v2x_frassoc_thick_o,Freedom of Association (thick) - origin,V-Dem,float,0-1,
+v2x_frassoc_thick_d,Freedom of Association (thick) - dest,V-Dem,float,0-1,
+v2xel_frefair_o,Clean Elections Index - origin,V-Dem,float,0-1,
+v2xel_frefair_d,Clean Elections Index - destination,V-Dem,float,0-1,
+v2x_liberal_o,Liberal Component Index - origin,V-Dem,float,0-1,
+v2x_liberal_d,Liberal Component Index - destination,V-Dem,float,0-1,
+v2xcl_rol_o,Rule of Law Index - origin,V-Dem,float,0-1,
+v2xcl_rol_d,Rule of Law Index - destination,V-Dem,float,0-1,
+v2x_jucon_o,Judicial Constraints on the Executive - origin,V-Dem,float,0-1,
+v2x_jucon_d,Judicial Constraints on the Executive - dest,V-Dem,float,0-1,
+v2xlg_legcon_o,Legislative Constraints on the Executive - origin,V-Dem,float,0-1,
+v2xlg_legcon_d,Legislative Constraints on the Executive - dest,V-Dem,float,0-1,
+democracy_diff_polyarchy,Absolute difference in Electoral Democracy between origin and destination,Derived,float,0-1,"|v2x_polyarchy_o - v2x_polyarchy_d|"
+democracy_avg_polyarchy,Average Electoral Democracy of the pair,Derived,float,0-1,"(v2x_polyarchy_o + v2x_polyarchy_d) / 2"
+democracy_min_polyarchy,Minimum Electoral Democracy of the pair,Derived,float,0-1,"min(v2x_polyarchy_o, v2x_polyarchy_d)"
+both_democratic,"Both countries have Electoral Democracy >= 0.5",Derived,binary,0 or 1,Useful for democratic peace / democratic trade hypothesis
+democracy_diff_libdem,Absolute difference in Liberal Democracy Index,Derived,float,0-1,"|v2x_libdem_o - v2x_libdem_d|"

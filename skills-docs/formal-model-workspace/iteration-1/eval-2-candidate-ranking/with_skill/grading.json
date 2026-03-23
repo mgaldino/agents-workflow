@@ -1,0 +1,15 @@
+{
+  "eval_id": 2,
+  "run_type": "with_skill",
+  "pass_rate": 1.0,
+  "expectations": [
+    {"text": "Output contains editorial letter section", "passed": true, "evidence": "'# Editorial Letter -- Formal Model Review'"},
+    {"text": "Output contains 3 separate reports (Design, Technical, Exposition)", "passed": true, "evidence": "'Full Report -- Model Design', 'Full Report -- Technical Presentation', 'Full Report -- Exposition'"},
+    {"text": "Output contains consolidated scores table with numeric scores", "passed": true, "evidence": "Table: Design 7/10, Technical 7/10, Exposition 7/10, Global 7/10"},
+    {"text": "Output contains editorial decision", "passed": true, "evidence": "'## Decision: R&R minor'"},
+    {"text": "Correctly identifies Tullock contest model for candidate ranking", "passed": true, "evidence": "Identifies 'team Tullock contest', hump-shaped incentives, expected seat share hypothesis"},
+    {"text": "References methodological literature (Thomson/Board/Dixit/Varian)", "passed": true, "evidence": "Thomson (1999), Board & Meyer-ter-Vehn (2018), Dixit (2015), Varian (1997/2016) cited throughout all 3 reports"},
+    {"text": "Contains constructive suggestions with specific items", "passed": true, "evidence": "Detailed suggestions in each report + editorial priorities"},
+    {"text": "Discusses multiple extensions (exposure, incumbency, parties)", "passed": true, "evidence": "Discusses candidate exposure (5.2), rank-dependent benefits (5.3), incumbency (5.4), multi-party (5.5)"}
+  ]
+}

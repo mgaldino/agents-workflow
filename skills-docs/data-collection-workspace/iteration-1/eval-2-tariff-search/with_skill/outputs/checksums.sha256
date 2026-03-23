@@ -1,0 +1,11 @@
+# Checksums dos arquivos de dados
+# Gerar apos download real com: cd outputs && sha256sum raw/* processed/* > checksums.sha256
+#
+# Os arquivos SAMPLE sao dados de demonstracao. Apos executar os scripts de download,
+# regenere este arquivo com os checksums reais:
+#
+#   cd outputs
+#   sha256sum raw/*.csv processed/*.csv > checksums.sha256
+#
+# SAMPLE checksums (apenas para referencia):
+# Execute sha256sum nos arquivos reais apos download.

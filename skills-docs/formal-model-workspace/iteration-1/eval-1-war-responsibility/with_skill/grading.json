@@ -1,0 +1,15 @@
+{
+  "eval_id": 1,
+  "run_type": "with_skill",
+  "pass_rate": 1.0,
+  "expectations": [
+    {"text": "Output contains editorial letter section", "passed": true, "evidence": "Opens with '# Editorial Letter -- Formal Model Review'"},
+    {"text": "Output contains 3 separate reports (Design, Technical, Exposition)", "passed": true, "evidence": "Contains 'Full Report -- Model Design', 'Full Report -- Technical Presentation', 'Full Report -- Exposition'"},
+    {"text": "Output contains consolidated scores table with numeric scores", "passed": true, "evidence": "Table with Design 8/10, Technical 7/10, Exposition 8/10, Global 8/10"},
+    {"text": "Output contains editorial decision", "passed": true, "evidence": "'## Decision: Accept'"},
+    {"text": "Correctly identifies model type (LRC / blame avoidance)", "passed": true, "evidence": "Extensively discusses Loss Responsibility Costs, blame avoidance, crisis bargaining"},
+    {"text": "References methodological literature (Thomson/Board/Dixit/Varian)", "passed": true, "evidence": "References Thomson (1999), Board & Meyer-ter-Vehn (2018), Dixit (2015), Varian (1997/2016) in header and throughout"},
+    {"text": "Contains constructive suggestions with specific items", "passed": true, "evidence": "Multiple 'Constructive Suggestions' sections with 4-5 specific items each"},
+    {"text": "Mentions specific paper elements (propositions, sections, variables)", "passed": true, "evidence": "References Hypothesis 1, 2a, 2b, Models I/II, beta, k, Figures 1-9, S_2, Congressional Support Scores"}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "eval_id": 3,
+  "eval_name": "democracy-trade-merge",
+  "prompt": "Estou pesquisando a relação entre democracia e comércio internacional. Preciso de dados do V-Dem para índice de democracia e do CEPII Gravity para fluxos de comércio bilateral, cobertura global, 1990-2020.",
+  "assertions": [
+    "Separate download scripts exist for V-Dem and CEPII Gravity",
+    "A merge/processing script exists that combines both data sources",
+    "SOURCES.yaml contains at least 2 entries (one per data source)",
+    "DATA_DICTIONARY.md covers variables from both V-Dem and CEPII sources",
+    "README.md documents the execution order of scripts",
+    "requirements.txt lists dependencies for both data sources"
+  ]
+}

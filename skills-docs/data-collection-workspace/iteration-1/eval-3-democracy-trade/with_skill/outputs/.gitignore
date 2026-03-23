@@ -1,0 +1,29 @@
+# Credenciais (NUNCA versionar)
+.env
+
+# Dados brutos (arquivos grandes, baixar via scripts)
+raw/*.csv
+raw/*.zip
+raw/*.dta
+raw/*.xlsx
+
+# Dados processados (reproduzir via scripts)
+processed/*.csv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

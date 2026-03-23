@@ -1,0 +1,35 @@
+{
+  "reviews": [
+    {
+      "run_id": "eval-1-war-responsibility-with_skill",
+      "feedback": "Achei que isso aqui do output sem skill ficou melhor e faltou no com skill: \"### A. Research Question and Importance (Score: 9/10)\n\nThe paper addresses a genuinely important and under-theorized puzzle in American politics and international relations: why do presidents consistently seek formal authorization for large wars but act unilaterally for smaller operations? This question sits at the intersection of two major literatures---American political institutions (the \"imperial presidency\" debate) and international crisis bargaining---and the paper rightly notes that prior work has failed to connect these streams in a satisfying way. The puzzle is empirically well-motivated: Figure 1, showing U.S. combat fatalities by authorization status since 1898, is an immediately compelling visualization that makes the question vivid for the reader. The normative stakes are high (democratic accountability over the use of military force), and the answer has clear policy implications. The only reason this does not receive a perfect score is that the core insight---that blame avoidance drives congressional behavior in the war powers context---has been articulated informally by prior scholars (Schultz 2003; Ely 1995; Weaver 1986), so the contribution is more one of formalization and integration than of entirely novel theoretical intuition.\"",
+      "timestamp": "2026-03-13T16:24:25.389Z"
+    },
+    {
+      "run_id": "eval-1-war-responsibility-without_skill",
+      "feedback": "",
+      "timestamp": "2026-03-13T16:24:25.389Z"
+    },
+    {
+      "run_id": "eval-2-candidate-ranking-with_skill",
+      "feedback": "",
+      "timestamp": "2026-03-13T16:24:25.389Z"
+    },
+    {
+      "run_id": "eval-2-candidate-ranking-without_skill",
+      "feedback": "",
+      "timestamp": "2026-03-13T16:24:25.389Z"
+    },
+    {
+      "run_id": "eval-3-misinformation-design-with_skill",
+      "feedback": "",
+      "timestamp": "2026-03-13T16:24:25.389Z"
+    },
+    {
+      "run_id": "eval-3-misinformation-design-without_skill",
+      "feedback": "",
+      "timestamp": "2026-03-13T16:24:25.389Z"
+    }
+  ],
+  "status": "complete"
+}

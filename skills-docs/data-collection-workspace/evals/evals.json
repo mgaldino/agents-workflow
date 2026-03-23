@@ -1,0 +1,23 @@
+{
+  "skill_name": "data-collection",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Preciso de dados de PIB per capita e população para todos os países da América Latina, de 2000 a 2023. Quero montar um painel país-ano.",
+      "expected_output": "Script Python usando wbdata ou World Bank API para baixar WDI, SOURCES.yaml documentando a fonte, DATA_DICTIONARY.md com variáveis, estrutura de diretórios completa, README com instruções de reprodução.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Preciso de dados sobre tarifas comerciais de países da OCDE no período 2000-2010. Veja se tem algo no Harvard Dataverse ou em outra base acadêmica.",
+      "expected_output": "Pesquisa de fontes disponíveis (Dataverse, WITS, TRAINS), recomendação fundamentada, script de download, documentação completa com SOURCES.yaml e DATA_DICTIONARY.md.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Estou pesquisando a relação entre democracia e comércio internacional. Preciso de dados do V-Dem para índice de democracia e do CEPII Gravity para fluxos de comércio bilateral, cobertura global, 1990-2020.",
+      "expected_output": "Dois scripts de download separados (V-Dem + CEPII), script de merge/processamento, SOURCES.yaml com duas entradas, DATA_DICTIONARY.md cobrindo variáveis de ambas as fontes, README com ordem de execução.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+# Checksums SHA-256 dos arquivos de dados
+# Gerado em: 2026-03-13
+# Para verificar: sha256sum -c checksums.sha256
+#
+# NOTA: Estes checksums correspondem aos arquivos SAMPLE.
+# Apos executar os scripts de download reais, regere os checksums com:
+#   cd data && sha256sum raw/* processed/* > checksums.sha256
+
+# Os checksums abaixo sao placeholders — devem ser regenerados apos o download real.
+# Exemplo de formato:
+# a1b2c3d4e5f6...  raw/vdem_v14_cy_20260313.csv
+# f6e5d4c3b2a1...  raw/cepii_gravity_20260313.csv
+# 1a2b3c4d5e6f...  processed/democracy_trade_panel.csv

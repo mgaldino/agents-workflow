@@ -1,0 +1,14 @@
+{
+  "eval_id": 3,
+  "run_type": "with_skill",
+  "pass_rate": 1.0,
+  "expectations": [
+    {"text": "Output follows Parecer de Design do Modelo format", "passed": true, "evidence": "'# Parecer de Design do Modelo (Dixit / Varian / Board)'"},
+    {"text": "Contains all 6 dimensions (MD1-MD6)", "passed": true, "evidence": "MD1 Qualidade da pergunta, MD2 Simplicidade, MD3 Isolamento, MD4 Riqueza, MD5 Tipo de contribuicao, MD6 Processo de construcao"},
+    {"text": "Contains numeric score 1-10", "passed": true, "evidence": "'## Score: 8'"},
+    {"text": "Identifies strategic complementarities / Bayesian-Nash as mechanism", "passed": true, "evidence": "Identifies 'tension between discipline effect and circulation effect of homophily', strategic complementarities, Bayesian-Nash"},
+    {"text": "Classifies contribution type per Board & Meyer-ter-Vehn", "passed": true, "evidence": "'**new model (new lens)**' + 'isolating a new political/economic force' per Board & Meyer-ter-Vehn taxonomy"},
+    {"text": "References Dixit, Varian, or Board", "passed": true, "evidence": "Dixit, Varian, Board & Meyer-ter-Vehn cited extensively throughout all dimensions"},
+    {"text": "Contains one-sentence model description", "passed": true, "evidence": "'## O modelo em uma frase' with complete one-sentence description"}
+  ]
+}

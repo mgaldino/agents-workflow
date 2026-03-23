@@ -1,0 +1,23 @@
+sources:
+  - id: worldbank_wdi
+    name: "World Development Indicators"
+    provider: "World Bank"
+    url: "https://databank.worldbank.org/source/world-development-indicators"
+    api_docs: "https://datahelpdesk.worldbank.org/knowledgebase/articles/889392"
+    access_method: api
+    requires_credentials: false
+    license: "CC BY-4.0"
+    variables_used:
+      - "NY.GDP.PCAP.CD"  # GDP per capita (current US$)
+      - "SP.POP.TOTL"     # Population, total
+    temporal_coverage: "2000-2023"
+    geographic_coverage: "America Latina (20 paises)"
+    unit_of_analysis: "country-year"
+    download_script: "scripts/download_worldbank.py"
+    process_script: "scripts/process_worldbank.py"
+    date_accessed: "2026-03-13"
+    notes: >
+      API v2 do World Bank, formato JSON. Nao requer autenticacao.
+      Dados de PIB per capita em dolares correntes e populacao total.
+      Cobertura: ARG, BOL, BRA, CHL, COL, CRI, CUB, DOM, ECU, SLV,
+      GTM, HTI, HND, MEX, NIC, PAN, PRY, PER, URY, VEN.

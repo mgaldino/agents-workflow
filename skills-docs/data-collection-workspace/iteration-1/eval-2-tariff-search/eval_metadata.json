@@ -1,0 +1,13 @@
+{
+  "eval_id": 2,
+  "eval_name": "tariff-oecd-search",
+  "prompt": "Preciso de dados sobre tarifas comerciais de países da OCDE no período 2000-2010. Veja se tem algo no Harvard Dataverse ou em outra base acadêmica.",
+  "assertions": [
+    "At least 2 alternative data sources are presented with pros/cons or ranking",
+    "A Python download script exists for the recommended primary source",
+    "SOURCES.yaml exists and contains required fields: id, name, provider, url, license, date_accessed",
+    "DATA_DICTIONARY.md exists and documents tariff-related variables",
+    "README.md contains reproduction instructions",
+    "If any source requires credentials, .env.example documents how to obtain them"
+  ]
+}

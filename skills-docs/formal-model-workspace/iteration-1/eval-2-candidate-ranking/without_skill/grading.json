@@ -1,0 +1,15 @@
+{
+  "eval_id": 2,
+  "run_type": "without_skill",
+  "pass_rate": 0.5,
+  "expectations": [
+    {"text": "Output contains editorial letter section", "passed": false, "evidence": "Uses '# Referee Report' — no editorial letter format"},
+    {"text": "Output contains 3 separate reports (Design, Technical, Exposition)", "passed": false, "evidence": "Has numbered sections but not 3 distinct formal reports with separate structures"},
+    {"text": "Output contains consolidated scores table with numeric scores", "passed": true, "evidence": "Has scores table: Model 7, Technical 8, Exposition 7, Overall 7.5"},
+    {"text": "Output contains editorial decision", "passed": false, "evidence": "'Recommendation: merits publication' but no formal decision category (R&R/Accept/Reject)"},
+    {"text": "Correctly identifies Tullock contest model for candidate ranking", "passed": true, "evidence": "Identifies Tullock contest, bell-shaped incentives, expected seat share hypothesis"},
+    {"text": "References methodological literature (Thomson/Board/Dixit/Varian)", "passed": false, "evidence": "No references to Thomson, Board, Dixit, or Varian"},
+    {"text": "Contains constructive suggestions with specific items", "passed": true, "evidence": "Constructive suggestions throughout and in dedicated sections"},
+    {"text": "Discusses multiple extensions (exposure, incumbency, parties)", "passed": true, "evidence": "Discusses symmetry, Tullock function, exposure, incumbency, multi-party, welfare"}
+  ]
+}

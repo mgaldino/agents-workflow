@@ -1,0 +1,114 @@
+sources:
+  - id: wits_trains
+    name: "UNCTAD TRAINS via WITS (World Integrated Trade Solution)"
+    provider: "World Bank / UNCTAD"
+    url: "https://wits.worldbank.org/"
+    api_docs: "https://wits.worldbank.org/witsapiintro.aspx?lang=en"
+    access_method: api
+    requires_credentials: false
+    license: "World Bank Terms of Use (open access for research)"
+    variables_used:
+      - "SimpleAverage"         # Simple average MFN applied tariff rate
+      - "WeightedAverage"       # Trade-weighted average MFN applied tariff rate
+      - "Nomen"                 # Tariff nomenclature code
+      - "TotalTariffLines"      # Number of tariff lines
+      - "DutiableTariffLines"   # Number of dutiable tariff lines
+    temporal_coverage: "1988-2023"
+    geographic_coverage: "global (including all OECD countries)"
+    unit_of_analysis: "country-year-product"
+    download_script: "scripts/download_wits.py"
+    date_accessed: "2026-03-13"
+    notes: >
+      Principal source for MFN applied tariffs. The WITS API provides SDMX-format
+      data for both aggregate and tariff-line level data. UNCTAD TRAINS contains
+      annual tariff structures (MFN Applied and Preferential tariffs) since 1988.
+      Best option for comprehensive country-year tariff panels covering OECD members.
+
+  - id: oecd_tariffs
+    name: "OECD Trade Policy Indicators"
+    provider: "OECD"
+    url: "https://data-explorer.oecd.org/"
+    api_docs: "https://data.oecd.org/api/sdmx-json-documentation/"
+    access_method: api
+    requires_credentials: false
+    license: "OECD Terms and Conditions (free for research with attribution)"
+    variables_used:
+      - "TARIFF_MFN_AVG"       # Average MFN tariff rate
+      - "TARIFF_BOUND_AVG"     # Average bound tariff rate
+    temporal_coverage: "1996-2022"
+    geographic_coverage: "OECD member countries"
+    unit_of_analysis: "country-year"
+    download_script: "scripts/download_oecd.py"
+    date_accessed: "2026-03-13"
+    notes: >
+      OECD Data Explorer provides trade policy indicators including tariff averages
+      for member countries. Access via SDMX REST API. Good complement to WITS for
+      OECD-specific indicators and policy analysis. Uses the new SDMX API at
+      sdmx.oecd.org.
+
+  - id: wto_tariff_profiles
+    name: "WTO World Tariff Profiles"
+    provider: "World Trade Organization"
+    url: "https://www.wto.org/english/tratop_e/tariffs_e/tariff_data_e.htm"
+    api_docs: "https://data.wto.org/"
+    access_method: bulk_download
+    requires_credentials: false
+    license: "WTO Terms of Use (free for research)"
+    variables_used:
+      - "MFN_Applied_Simple"    # Simple average MFN applied duty
+      - "MFN_Applied_Weighted"  # Trade-weighted average MFN applied duty
+      - "Binding_Coverage"      # Percentage of tariff lines with bindings
+      - "Bound_Simple"          # Simple average bound duty
+    temporal_coverage: "1996-2023"
+    geographic_coverage: "164 WTO member economies"
+    unit_of_analysis: "country-year-sector"
+    download_script: "scripts/download_wto.py"
+    date_accessed: "2026-03-13"
+    notes: >
+      WTO Tariff Download Facility and the Analytical Database provide applied
+      and bound tariffs at HS6 level. Bulk download available for multiple countries/years.
+      The WTO data portal (data.wto.org) offers a REST API for programmatic access.
+
+  - id: cepii_macmap
+    name: "CEPII MAcMap-HS6 (Market Access Map)"
+    provider: "CEPII / ITC"
+    url: "http://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele.asp"
+    api_docs: null
+    access_method: bulk_download
+    requires_credentials: true
+    license: "Free for academic research (registration required)"
+    variables_used:
+      - "AVE"                   # Ad Valorem Equivalent tariff
+      - "MFN_applied"           # MFN applied tariff rate
+      - "Preferential_tariff"   # Preferential tariff rate
+    temporal_coverage: "2001, 2004, 2007, 2010, 2013, 2016, 2019"
+    geographic_coverage: "global bilateral (including OECD)"
+    unit_of_analysis: "country-pair-product-year"
+    download_script: "scripts/download_cepii.py"
+    date_accessed: "2026-03-13"
+    notes: >
+      MAcMap provides bilateral ad valorem equivalent tariffs including preferential
+      agreements, at the HS6 level. Available for benchmark years only (not annual).
+      Requires registration at CEPII website. Excellent for gravity model estimation.
+      Covers 2001, 2004, 2007, 2010 within the requested period.
+
+  - id: harvard_dataverse_reinhardt
+    name: "Replication Data for Developing Countries and GATT/WTO Dispute Settlement"
+    provider: "Eric Reinhardt / Harvard Dataverse"
+    url: "https://dataverse.harvard.edu/dataset.xhtml?persistentId=hdl:1902.1/10317"
+    api_docs: "https://guides.dataverse.org/en/latest/api/"
+    access_method: api
+    requires_credentials: false
+    license: "CC0 (Public Domain)"
+    variables_used:
+      - "tariff_rate"           # Various tariff measures as used in replication
+    temporal_coverage: "varies by dataset"
+    geographic_coverage: "WTO/GATT member countries"
+    unit_of_analysis: "country-year"
+    download_script: "scripts/download_dataverse.py"
+    date_accessed: "2026-03-13"
+    notes: >
+      Harvard Dataverse hosts replication datasets that may contain curated tariff
+      data. The Reinhardt dataset is one example; additional searches may reveal
+      more targeted datasets. The Dataverse API allows programmatic access without
+      credentials for public datasets.

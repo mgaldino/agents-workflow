@@ -1,0 +1,189 @@
+{
+  "metadata": {
+    "skill_name": "data-collection",
+    "skill_path": "/Users/manoelgaldino/.claude/skills/data-collection",
+    "executor_model": "claude-opus-4-6",
+    "analyzer_model": "claude-opus-4-6",
+    "timestamp": "2026-03-13T12:00:00Z",
+    "evals_run": [1, 2, 3],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "latam-gdp-panel",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 709.7,
+        "tokens": 39193,
+        "tool_calls": 17,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Directory structure includes raw/, processed/, scripts/, and docs/ subdirectories", "passed": true, "evidence": "All four subdirectories present with contents"},
+        {"text": "A Python download script exists that targets the World Bank API", "passed": true, "evidence": "download_worldbank.py targets World Bank API v2"},
+        {"text": "SOURCES.yaml exists and contains required fields", "passed": true, "evidence": "Contains id, name, provider, url, license, date_accessed"},
+        {"text": "DATA_DICTIONARY.md exists and documents variables with type, description, and source linkage", "passed": true, "evidence": "Documents 5 variables with type, description, source linkage to worldbank_wdi"},
+        {"text": "README.md contains step-by-step reproduction instructions", "passed": true, "evidence": "5-step numbered instructions with bash commands"},
+        {"text": ".gitignore exists and excludes .env", "passed": true, "evidence": ".env excluded on line 2"},
+        {"text": "requirements.txt lists Python dependencies", "passed": true, "evidence": "Lists 5 dependencies with version constraints"}
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "latam-gdp-panel",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.14,
+        "passed": 1,
+        "failed": 6,
+        "total": 7,
+        "time_seconds": 255.9,
+        "tokens": 22082,
+        "tool_calls": 11,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Directory structure includes raw/, processed/, scripts/, and docs/ subdirectories", "passed": false, "evidence": "All files flat in outputs/, no subdirectories"},
+        {"text": "A Python download script exists that targets the World Bank API", "passed": true, "evidence": "download_wb_data.py uses wbgapi and direct API URLs"},
+        {"text": "SOURCES.yaml exists and contains required fields", "passed": false, "evidence": "No SOURCES.yaml; codebook.txt has partial info"},
+        {"text": "DATA_DICTIONARY.md exists and documents variables with type, description, and source linkage", "passed": false, "evidence": "No DATA_DICTIONARY.md; codebook.txt lacks types"},
+        {"text": "README.md contains step-by-step reproduction instructions", "passed": false, "evidence": "No README.md created"},
+        {"text": ".gitignore exists and excludes .env", "passed": false, "evidence": "No .gitignore created"},
+        {"text": "requirements.txt lists Python dependencies", "passed": false, "evidence": "No requirements.txt; deps in script docstring only"}
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "tariff-oecd-search",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 706.3,
+        "tokens": 45183,
+        "tool_calls": 28,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "At least 2 alternative data sources are presented with pros/cons or ranking", "passed": true, "evidence": "5 sources in structured table with Pro/Contra/ranking"},
+        {"text": "A Python download script exists for the recommended primary source", "passed": true, "evidence": "download_wits.py with API calls, retry, CSV output"},
+        {"text": "SOURCES.yaml exists and contains required fields", "passed": true, "evidence": "All 5 entries have id, name, provider, url, license, date_accessed"},
+        {"text": "DATA_DICTIONARY.md exists and documents tariff-related variables", "passed": true, "evidence": "Documents 11 variables with types, descriptions, units"},
+        {"text": "README.md contains reproduction instructions", "passed": true, "evidence": "4 numbered steps: install, credentials, execution, verification"},
+        {"text": "If any source requires credentials, .env.example documents how to obtain them", "passed": true, "evidence": "CEPII credentials documented with URL and steps"}
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "tariff-oecd-search",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.33,
+        "passed": 2,
+        "failed": 4,
+        "total": 6,
+        "time_seconds": 671.3,
+        "tokens": 41329,
+        "tool_calls": 26,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "At least 2 alternative data sources are presented with pros/cons or ranking", "passed": true, "evidence": "Three-tier comparison with 5+ sources"},
+        {"text": "A Python download script exists for the recommended primary source", "passed": true, "evidence": "download_wdi_tariffs.py for World Bank WDI"},
+        {"text": "SOURCES.yaml exists and contains required fields", "passed": false, "evidence": "No SOURCES.yaml; info scattered across README_data_sources.md"},
+        {"text": "DATA_DICTIONARY.md exists and documents tariff-related variables", "passed": false, "evidence": "No DATA_DICTIONARY.md; codebook.md exists but different format"},
+        {"text": "README.md contains reproduction instructions", "passed": false, "evidence": "README_data_sources.md exists but named differently"},
+        {"text": "If any source requires credentials, .env.example documents how to obtain them", "passed": false, "evidence": "No .env.example despite WITS requiring registration"}
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "democracy-trade-merge",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 458.6,
+        "tokens": 38651,
+        "tool_calls": 20,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Separate download scripts exist for V-Dem and CEPII Gravity", "passed": true, "evidence": "download_vdem.py and download_cepii_gravity.py with retry, progress bars"},
+        {"text": "A merge/processing script exists that combines both data sources", "passed": true, "evidence": "process_merge.py with bilateral merge and derived variables"},
+        {"text": "SOURCES.yaml contains at least 2 entries (one per data source)", "passed": true, "evidence": "2 entries with license, citation, variables, coverage"},
+        {"text": "DATA_DICTIONARY.md covers variables from both V-Dem and CEPII sources", "passed": true, "evidence": "3 tables: V-Dem (10), CEPII (20), processed (~30) variables"},
+        {"text": "README.md documents the execution order of scripts", "passed": true, "evidence": "Step-by-step with explicit script ordering"},
+        {"text": "requirements.txt lists dependencies for both data sources", "passed": true, "evidence": "Lists 5 packages: requests, python-dotenv, pandas, tqdm, numpy"}
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "democracy-trade-merge",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.50,
+        "passed": 3,
+        "failed": 3,
+        "total": 6,
+        "time_seconds": 1033.6,
+        "tokens": 74871,
+        "tool_calls": 18,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Separate download scripts exist for V-Dem and CEPII Gravity", "passed": true, "evidence": "01_download_vdem.py and 02_download_cepii_gravity.py"},
+        {"text": "A merge/processing script exists that combines both data sources", "passed": true, "evidence": "03_merge_democracy_trade.py with bilateral merge"},
+        {"text": "SOURCES.yaml contains at least 2 entries (one per data source)", "passed": false, "evidence": "No SOURCES.yaml; metadata only in script docstrings"},
+        {"text": "DATA_DICTIONARY.md covers variables from both V-Dem and CEPII sources", "passed": false, "evidence": "data_dictionary.csv exists but in CSV not MD format"},
+        {"text": "README.md documents the execution order of scripts", "passed": false, "evidence": "No README.md; order only in transcript"},
+        {"text": "requirements.txt lists dependencies for both data sources", "passed": true, "evidence": "Lists pandas, requests, numpy"}
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {"mean": 1.0, "stddev": 0.0, "min": 1.0, "max": 1.0},
+      "time_seconds": {"mean": 624.9, "stddev": 138.4, "min": 458.6, "max": 709.7},
+      "tokens": {"mean": 41009, "stddev": 3375, "min": 38651, "max": 45183}
+    },
+    "without_skill": {
+      "pass_rate": {"mean": 0.32, "stddev": 0.18, "min": 0.14, "max": 0.50},
+      "time_seconds": {"mean": 653.6, "stddev": 389.7, "min": 255.9, "max": 1033.6},
+      "tokens": {"mean": 46094, "stddev": 26687, "min": 22082, "max": 74871}
+    },
+    "delta": {
+      "pass_rate": "+0.68",
+      "time_seconds": "-28.7",
+      "tokens": "-5085"
+    }
+  },
+  "notes": [
+    "With-skill runs achieve 100% pass rate across all 3 evals vs 32% baseline average",
+    "The skill's primary value is enforcing standardized documentation (SOURCES.yaml, DATA_DICTIONARY.md, .gitignore, .env.example) — without it, agents produce functional scripts but ad-hoc documentation",
+    "Baseline runs sometimes produce equivalent content under non-standard names (codebook.md vs DATA_DICTIONARY.md, README_data_sources.md vs README.md) — the skill enforces naming conventions",
+    "Script quality (download logic, API usage) is comparable between with/without skill — the differentiation is in project scaffolding and reproducibility artifacts",
+    "With-skill runs are slightly faster on average (-29s) and use fewer tokens (-5K), likely because the structured workflow reduces exploration/backtracking"
+  ]
+}

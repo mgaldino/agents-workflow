@@ -1,0 +1,70 @@
+sources:
+  - id: vdem_v14
+    name: "V-Dem Country-Year Dataset v14"
+    provider: "Varieties of Democracy (V-Dem) Institute, University of Gothenburg"
+    url: "https://www.v-dem.net/data/the-v-dem-dataset/"
+    api_docs: "https://www.v-dem.net/data/the-v-dem-dataset/country-year-v-dem-full-others/"
+    access_method: bulk_download
+    requires_credentials: false
+    license: "Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)"
+    citation: >
+      Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg,
+      Jan Teorell, et al. 2024. "V-Dem Dataset v14." Varieties of Democracy
+      (V-Dem) Project. https://doi.org/10.23696/vdemds24
+    variables_used:
+      - "v2x_polyarchy"   # Electoral Democracy Index (0-1)
+      - "v2x_libdem"      # Liberal Democracy Index (0-1)
+      - "v2x_partipdem"   # Participatory Democracy Index (0-1)
+      - "v2x_delibdem"    # Deliberative Democracy Index (0-1)
+      - "v2x_egaldem"     # Egalitarian Democracy Index (0-1)
+    temporal_coverage: "1789-2023 (filtrado: 1990-2020)"
+    geographic_coverage: "global (202 paises)"
+    unit_of_analysis: "country-year"
+    download_script: "scripts/download_vdem.py"
+    raw_file: "raw/vdem_v14_cy_YYYYMMDD.csv"
+    date_accessed: "2026-03-13"
+    notes: >
+      O dataset completo tem 4000+ variaveis. O script baixa todas mas filtra
+      apenas as variaveis de interesse e o periodo 1990-2020. O V-Dem usa
+      codificacao propria de paises mas inclui country_text_id (ISO3) para merge.
+
+  - id: cepii_gravity
+    name: "CEPII Gravity Dataset"
+    provider: "CEPII (Centre d'Etudes Prospectives et d'Informations Internationales)"
+    url: "http://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=8"
+    api_docs: "http://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=8"
+    access_method: bulk_download
+    requires_credentials: false
+    license: "Uso livre para pesquisa academica (ver termos no site do CEPII)"
+    citation: >
+      Head, Keith, and Thierry Mayer. 2014. "Gravity Equations: Workhorse, Toolkit,
+      and Cookbook." In Handbook of International Economics, Vol. 4, edited by
+      Gita Gopinath, Elhanan Helpman, and Kenneth Rogoff. Elsevier.
+      Dataset: http://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=8
+    variables_used:
+      - "tradeflow_baci"         # Fluxo de comercio bilateral BACI (USD)
+      - "tradeflow_comtrade_o"   # Exportacoes (reporter=origin, USD)
+      - "tradeflow_comtrade_d"   # Importacoes (reporter=dest, USD)
+      - "distw"                  # Distancia ponderada por populacao (km)
+      - "contig"                 # Contiguidade (fronteira comum, 0/1)
+      - "comlang_off"            # Lingua oficial comum (0/1)
+      - "colony"                 # Relacao colonial historica (0/1)
+      - "comcol"                 # Colonizador comum (0/1)
+      - "gdp_o"                  # PIB pais de origem (USD)
+      - "gdp_d"                  # PIB pais de destino (USD)
+      - "pop_o"                  # Populacao origem
+      - "pop_d"                  # Populacao destino
+      - "gatt_o"                 # Membro GATT/WTO origem (0/1)
+      - "gatt_d"                 # Membro GATT/WTO destino (0/1)
+      - "rta"                    # Acordo comercial regional (0/1)
+    temporal_coverage: "1948-2020 (filtrado: 1990-2020)"
+    geographic_coverage: "global (~200 paises, pares bilaterais)"
+    unit_of_analysis: "country_pair-year (direcional: origem-destino)"
+    download_script: "scripts/download_cepii_gravity.py"
+    raw_file: "raw/cepii_gravity_YYYYMMDD.csv"
+    date_accessed: "2026-03-13"
+    notes: >
+      Dataset grande (~800MB compactado). O download pode levar varios minutos.
+      O script le em chunks para gerenciar memoria. Fluxos comerciais vem de
+      duas fontes: BACI (reconciliado pelo CEPII) e UN Comtrade (bruto).
+      Preferimos tradeflow_baci quando disponivel.

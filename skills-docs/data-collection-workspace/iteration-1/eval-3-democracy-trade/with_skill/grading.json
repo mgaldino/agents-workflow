@@ -1,0 +1,90 @@
+{
+  "expectations": [
+    {
+      "text": "Separate download scripts exist for V-Dem and CEPII Gravity",
+      "passed": true,
+      "evidence": "Two separate, substantive download scripts exist: scripts/download_vdem.py (131 lines) downloads V-Dem v14 Country-Year dataset from https://v-dem.net/media/datasets/V-Dem-CY-Full+Others-v14.csv.zip, and scripts/download_cepii_gravity.py (162 lines) downloads the CEPII Gravity dataset from http://www.cepii.fr/DATA_DOWNLOAD/gravity/data/Gravity_csv_V202211.zip. Both include retry logic with exponential backoff, progress bars via tqdm, period filtering (1990-2020), and variable selection. They are genuinely distinct scripts targeting different data sources."
+    },
+    {
+      "text": "A merge/processing script exists that combines both data sources",
+      "passed": true,
+      "evidence": "scripts/process_merge.py (186 lines) loads both raw datasets, performs a bilateral merge via ISO3 codes and year (merge 1 for origin country democracy, merge 2 for destination country democracy), creates derived variables (both_democratic, polyarchy_diff, polyarchy_min, polyarchy_max, polyarchy_product), generates log-transformed trade and distance variables, and outputs the combined panel as democracy_trade_panel.csv. The merge logic is substantively correct for bilateral trade-democracy analysis."
+    },
+    {
+      "text": "SOURCES.yaml contains at least 2 entries (one per data source)",
+      "passed": true,
+      "evidence": "docs/SOURCES.yaml contains exactly 2 entries under the 'sources' key: (1) id: vdem_v14 with provider 'Varieties of Democracy (V-Dem) Institute, University of Gothenburg' and url 'https://www.v-dem.net/data/the-v-dem-dataset/', and (2) id: cepii_gravity with provider 'CEPII' and url 'http://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=8'. Both entries include comprehensive metadata: license, citation, variables_used, temporal_coverage, geographic_coverage, unit_of_analysis, download_script, and date_accessed."
+    },
+    {
+      "text": "DATA_DICTIONARY.md covers variables from both V-Dem and CEPII sources",
+      "passed": true,
+      "evidence": "docs/DATA_DICTIONARY.md contains three detailed variable tables: (1) vdem_v14_cy_YYYYMMDD.csv with 10 variables including v2x_polyarchy, v2x_libdem, v2x_partipdem, v2x_delibdem, v2x_egaldem (sourced from vdem_v14); (2) cepii_gravity_YYYYMMDD.csv with 20 variables including tradeflow_baci, distw, contig, comlang_off (sourced from cepii_gravity); (3) democracy_trade_panel.csv with ~30 variables combining both sources plus derived variables. Each variable has type, description, source id, unit, and valid values documented."
+    },
+    {
+      "text": "README.md documents the execution order of scripts",
+      "passed": true,
+      "evidence": "README.md section 'Como reproduzir a coleta' -> 'Passo a passo' explicitly lists the execution order in step 3: '1. pip install -r scripts/requirements.txt', '2. cp .env.example .env', '3. python scripts/download_vdem.py', 'python scripts/download_cepii_gravity.py', 'python scripts/process_merge.py'. The order is correct: download scripts first (either order between them), then the merge/processing script last."
+    },
+    {
+      "text": "requirements.txt lists dependencies for both data sources",
+      "passed": true,
+      "evidence": "scripts/requirements.txt lists 5 packages: requests>=2.28.0 (HTTP downloads for both sources), python-dotenv>=1.0.0 (credential management), pandas>=1.5.0 (data loading/processing for both), tqdm>=4.64.0 (progress bars in both download scripts), numpy>=1.23.0 (log transforms in process_merge.py). All dependencies needed by the V-Dem download script, CEPII download script, and merge script are covered."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "total_duration_seconds": 458.6
+  },
+  "claims": [
+    {
+      "claim": "V-Dem download URL points to the actual v14 dataset",
+      "type": "factual",
+      "verified": false,
+      "evidence": "The URL https://v-dem.net/media/datasets/V-Dem-CY-Full+Others-v14.csv.zip is plausible but cannot be verified without an HTTP request. V-Dem frequently changes download URLs between versions."
+    },
+    {
+      "claim": "CEPII Gravity download URL points to the actual dataset",
+      "type": "factual",
+      "verified": false,
+      "evidence": "The URL http://www.cepii.fr/DATA_DOWNLOAD/gravity/data/Gravity_csv_V202211.zip is plausible but cannot be verified. CEPII may require registration, which the script notes but does not handle programmatically."
+    },
+    {
+      "claim": "The bilateral merge logic is correct for trade-democracy analysis",
+      "type": "quality",
+      "verified": true,
+      "evidence": "process_merge.py correctly merges V-Dem data twice: once on iso3_o+year for origin democracy, once on iso3_d+year for destination democracy. Uses left join with Gravity as base (appropriate since Gravity defines the bilateral pairs). Validate='m:1' is correct since V-Dem is country-year (one row per country-year) while Gravity has many pairs per country-year."
+    },
+    {
+      "claim": "Sample data files contain realistic values",
+      "type": "quality",
+      "verified": false,
+      "evidence": "Sample CSV files exist in raw/ and processed/ but were not examined in detail. The transcript claims realistic values for 8 countries across 7 periods, but since these are simulated samples (not real downloads), their realism is secondary."
+    },
+    {
+      "claim": "The project covers 202 countries from V-Dem and ~200 from CEPII",
+      "type": "factual",
+      "verified": false,
+      "evidence": "These coverage claims in SOURCES.yaml match known facts about V-Dem and CEPII, but the actual download was not executed in the sandbox, so the realized coverage cannot be confirmed."
+    }
+  ],
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "requirements.txt lists dependencies for both data sources",
+        "reason": "This assertion could pass even if a critical dependency were missing (e.g., if numpy were omitted, the merge script would fail at runtime). A stronger test would verify that the scripts can at least be imported without ImportError, or that each import statement in the scripts has a corresponding entry in requirements.txt."
+      },
+      {
+        "reason": "No assertion checks whether the download scripts actually use valid, reachable URLs. The V-Dem and CEPII URLs are hardcoded and may be stale or incorrect. A test that performs a HEAD request on each URL would catch broken links."
+      },
+      {
+        "reason": "No assertion checks the quality of the sample/simulated data files (raw/ and processed/). These files demonstrate the expected output format but could contain nonsensical values. An assertion verifying that the sample processed CSV has columns from both sources (e.g., polyarchy_o AND tradeflow_baci) would confirm the merge output structure."
+      }
+    ],
+    "overall": "The assertions cover the structural deliverables well (scripts, docs, README) but don't test functional correctness -- whether the scripts would actually run successfully against real data. For a data collection skill, adding a lightweight 'dry run' or import check would meaningfully increase confidence."
+  }
+}

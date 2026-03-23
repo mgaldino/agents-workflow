@@ -1,0 +1,14 @@
+{
+  "eval_id": 1,
+  "eval_name": "latam-gdp-panel",
+  "prompt": "Preciso de dados de PIB per capita e população para todos os países da América Latina, de 2000 a 2023. Quero montar um painel país-ano.",
+  "assertions": [
+    "Directory structure includes raw/, processed/, scripts/, and docs/ subdirectories",
+    "A Python download script exists that targets the World Bank API",
+    "SOURCES.yaml exists and contains required fields: id, name, provider, url, license, date_accessed",
+    "DATA_DICTIONARY.md exists and documents variables with type, description, and source linkage",
+    "README.md contains step-by-step reproduction instructions",
+    ".gitignore exists and excludes .env",
+    "requirements.txt lists Python dependencies"
+  ]
+}

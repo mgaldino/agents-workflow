@@ -1,0 +1,58 @@
+{
+  "skill_name": "formal-model-skills",
+  "evals": [
+    {
+      "id": 1,
+      "name": "eval-1-war-responsibility",
+      "prompt": "Avalie este paper com modelo formal: /Users/manoelgaldino/Documents/DCP/Papers/war-and-responsibility.pdf",
+      "expected_output": "Carta editorial consolidada com 3 pareceres (Design, Apresentação Técnica, Exposição), scores, e recomendação estratégica.",
+      "skill": "review-formal-model",
+      "files": ["/Users/manoelgaldino/Documents/DCP/Papers/war-and-responsibility.pdf"],
+      "assertions": [
+        {"id": "A1", "text": "Output contains editorial letter section"},
+        {"id": "A2", "text": "Output contains 3 separate reports (Design, Technical, Exposition)"},
+        {"id": "A3", "text": "Output contains consolidated scores table with numeric scores"},
+        {"id": "A4", "text": "Output contains editorial decision"},
+        {"id": "A5", "text": "Correctly identifies model type (LRC / blame avoidance)"},
+        {"id": "A6", "text": "References methodological literature (Thomson/Board/Dixit/Varian)"},
+        {"id": "A7", "text": "Contains constructive suggestions with specific items"},
+        {"id": "A8", "text": "Mentions specific paper elements (propositions, sections, variables)"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "eval-2-candidate-ranking",
+      "prompt": "Avalie este paper com modelo formal: /Users/manoelgaldino/Documents/DCP/Papers/the-best-at-the-top-candidate-ranking-strategies-under-closed-list-proportional-representation.pdf",
+      "expected_output": "Carta editorial consolidada com 3 pareceres. Deve identificar o Tullock contest model.",
+      "skill": "review-formal-model",
+      "files": ["/Users/manoelgaldino/Documents/DCP/Papers/the-best-at-the-top-candidate-ranking-strategies-under-closed-list-proportional-representation.pdf"],
+      "assertions": [
+        {"id": "A1", "text": "Output contains editorial letter section"},
+        {"id": "A2", "text": "Output contains 3 separate reports (Design, Technical, Exposition)"},
+        {"id": "A3", "text": "Output contains consolidated scores table with numeric scores"},
+        {"id": "A4", "text": "Output contains editorial decision"},
+        {"id": "A5", "text": "Correctly identifies Tullock contest model for candidate ranking"},
+        {"id": "A6", "text": "References methodological literature (Thomson/Board/Dixit/Varian)"},
+        {"id": "A7", "text": "Contains constructive suggestions with specific items"},
+        {"id": "A8", "text": "Discusses multiple extensions (exposure, incumbency, parties)"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "eval-3-misinformation-design",
+      "prompt": "Avalie o design do modelo formal neste paper: /Users/manoelgaldino/Documents/DCP/Papers/rdad111.pdf",
+      "expected_output": "Parecer de Design do Modelo com scores MD1-MD6.",
+      "skill": "formal-model-design",
+      "files": ["/Users/manoelgaldino/Documents/DCP/Papers/rdad111.pdf"],
+      "assertions": [
+        {"id": "B1", "text": "Output follows Parecer de Design do Modelo format"},
+        {"id": "B2", "text": "Contains all 6 dimensions (MD1-MD6)"},
+        {"id": "B3", "text": "Contains numeric score 1-10"},
+        {"id": "B4", "text": "Identifies strategic complementarities / Bayesian-Nash as mechanism"},
+        {"id": "B5", "text": "Classifies contribution type per Board & Meyer-ter-Vehn"},
+        {"id": "B6", "text": "References Dixit, Varian, or Board"},
+        {"id": "B7", "text": "Contains one-sentence model description"}
+      ]
+    }
+  ]
+}

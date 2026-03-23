@@ -1,0 +1,23 @@
+# Credenciais
+.env
+
+# Dados brutos (podem ser grandes; reproduzir via scripts)
+raw/*.json
+raw/*.zip
+raw/*.xlsx
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp

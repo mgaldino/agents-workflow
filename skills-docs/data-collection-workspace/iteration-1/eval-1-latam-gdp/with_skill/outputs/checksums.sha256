@@ -1,0 +1,13 @@
+# SHA-256 checksums — gerados em 2026-03-13
+# Para verificar: sha256sum -c checksums.sha256
+# Nota: estes checksums correspondem aos dados de amostra (sample data).
+# Apos rodar os scripts de download reais, regenere com:
+#   cd data && sha256sum raw/* processed/* > checksums.sha256
+
+# Arquivos brutos (raw)
+# Regenerar apos download real:
+# sha256sum raw/worldbank_NY.GDP.PCAP.CD_20260313.json
+# sha256sum raw/worldbank_SP.POP.TOTL_20260313.json
+
+# Arquivo processado
+# sha256sum processed/painel_latam.csv
