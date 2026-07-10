@@ -1,0 +1,53 @@
+{
+  "benchmark_version": "0.1.0",
+  "executed_at": "2026-07-10",
+  "runtime": "codex-cli 0.144.1",
+  "purpose": "Smoke tests of routed execution, not comparative model calibration",
+  "limitations": [
+    "One observation per configuration",
+    "Tasks differ across models, so latency and token use are not comparable",
+    "Fast was accepted by the CLI for Luna and Terra but the effective tier was not exposed",
+    "Reported token use includes loaded context and cannot be attributed only to answer generation"
+  ],
+  "runs": [
+    {
+      "id": "luna-mechanical-001",
+      "task": "Sem usar ferramentas nem editar arquivos: transforme [{\"id\":2,\"nome\":\"B\"},{\"id\":1,\"nome\":\"A\"}] em CSV com cabeçalho id,nome, ordenado por id. Responda somente com o CSV em bloco de código.",
+      "model": "gpt-5.6-luna",
+      "effort": "low",
+      "speed_requested": "fast",
+      "elapsed_seconds": 9.973,
+      "reported_total_tokens": 12870,
+      "output": "```csv\nid,nome\n1,A\n2,B\n```\n",
+      "output_sha256": "3369be8564d83b02723a92835cad90cbe919036a46287be60eaafee161b5742d",
+      "objective_gate": "pass",
+      "independent_review": "pass"
+    },
+    {
+      "id": "terra-coding-001",
+      "task": "Sem usar ferramentas nem editar arquivos: a função Python def first_n(xs, n): return xs[:n+1] deveria retornar exatamente os primeiros n elementos. Explique o erro em uma frase e forneça a função corrigida.",
+      "model": "gpt-5.6-terra",
+      "effort": "medium",
+      "speed_requested": "fast",
+      "elapsed_seconds": 5.548,
+      "reported_total_tokens": 13571,
+      "output": "O erro é um *off-by-one*: `xs[:n+1]` inclui `n+1` elementos.\n\n```python\ndef first_n(xs, n):\n    return xs[:n]\n```\n",
+      "output_sha256": "fe6471ae288376932548658b984fa9d2f20cf4f9e1e41adca86f900443f439a7",
+      "objective_gate": "pass",
+      "independent_review": "pass-with-minor-wording-caveat"
+    },
+    {
+      "id": "sol-formal-001",
+      "task": "Sem usar ferramentas nem editar arquivos: avalie a afirmação Todo estimador não viesado é consistente. Refute-a ou prove-a. Se for falsa, dê um contraexemplo explícito e verifique não viés e não consistência.",
+      "model": "gpt-5.6-sol",
+      "effort": "xhigh",
+      "speed_requested": "standard",
+      "elapsed_seconds": 22.981,
+      "reported_total_tokens": 14867,
+      "output": "A afirmação é falsa. Não viés não implica consistência, pois o primeiro controla a esperança do estimador, enquanto a segunda exige concentração em torno do parâmetro à medida que \\(n\\to\\infty\\).\n\nConsidere\n\n\\[\nX_1,\\ldots,X_n \\overset{iid}{\\sim} \\operatorname{Bernoulli}(\\theta),\n\\qquad \\theta\\in(0,1),\n\\]\n\ne defina a sequência de estimadores\n\n\\[\n\\widehat{\\theta}_n=X_1.\n\\]\n\nEmbora observe uma amostra de tamanho \\(n\\), o estimador simplesmente ignora todas as observações exceto a primeira.\n\n**Não viés:**\n\n\\[\n\\mathbb{E}_\\theta[\\widehat{\\theta}_n]\n=\\mathbb{E}_\\theta[X_1]\n=\\theta\n\\]\n\npara todo \\(n\\). Portanto, \\(\\widehat{\\theta}_n\\) é não viesado.\n\n**Não consistência:**\n\nFixe\n\n\\[\n0<\\varepsilon<\\min\\{\\theta,1-\\theta\\}.\n\\]\n\nComo \\(X_1\\in\\{0,1\\}\\),\n\n\\[\n|X_1-\\theta|=\n\\begin{cases}\n\\theta, & X_1=0,\\\\\n1-\\theta, & X_1=1.\n\\end{cases}\n\\]\n\nNos dois casos, \\(|X_1-\\theta|>\\varepsilon\\). Logo,\n\n\\[\n\\Pr_\\theta\\left(\n|\\widehat{\\theta}_n-\\theta|>\\varepsilon\n\\right)=1\n\\]\n\npara todo \\(n\\). Portanto,\n\n\\[\n\\Pr_\\theta\\left(\n|\\widehat{\\theta}_n-\\theta|>\\varepsilon\n\\right)\\not\\longrightarrow 0,\n\\]\n\ne \\(\\widehat{\\theta}_n\\) não converge em probabilidade para \\(\\theta\\).\n\nAssim, \\(\\widehat{\\theta}_n=X_1\\) é não viesado para todo \\(n\\), mas não é consistente. Sua variância,\n\n\\[\n\\operatorname{Var}_\\theta(\\widehat{\\theta}_n)\n=\\theta(1-\\theta),\n\\]\n\ntambém deixa evidente o problema: ela não diminui quando o tamanho da amostra aumenta.\n",
+      "output_sha256": "c5d6c4dc28c90a3c33615a6cfbbf58dd2c931e1044529f159ab5d4c87dcb5b5e",
+      "objective_gate": "pass",
+      "independent_review": "pass"
+    }
+  ]
+}

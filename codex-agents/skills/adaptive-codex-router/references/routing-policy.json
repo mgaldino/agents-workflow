@@ -1,0 +1,41 @@
+{
+  "policy_version": "0.1.0",
+  "objective_order": ["quality", "speed", "token_or_credit_use"],
+  "conservative_when_uncertain": true,
+  "independent_review_when_stakes_high": true,
+  "fast_preferred_models": ["gpt-5.6-terra", "gpt-5.6-luna"],
+  "stages": {
+    "exploratory": {
+      "rubric_mean_min": 3.5,
+      "essential_dimension_min": 3.0,
+      "independent_review": false,
+      "critical_errors_allowed": 0
+    },
+    "internal": {
+      "rubric_mean_min": 4.0,
+      "essential_dimension_min": 3.0,
+      "independent_review": false,
+      "critical_errors_allowed": 0
+    },
+    "final": {
+      "rubric_mean_min": 4.5,
+      "essential_dimension_min": 4.0,
+      "independent_review": true,
+      "critical_errors_allowed": 0
+    },
+    "high-risk": {
+      "rubric_mean_min": 4.5,
+      "essential_dimension_min": 4.0,
+      "independent_review": true,
+      "adversarial_review": true,
+      "critical_errors_allowed": 0
+    }
+  },
+  "escalation_order": [
+    "repair_failed_component",
+    "increase_reasoning_effort",
+    "upgrade_model",
+    "add_independent_review",
+    "use_ultra_if_decomposable"
+  ]
+}

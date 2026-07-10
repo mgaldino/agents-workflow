@@ -275,6 +275,25 @@ Para cada canal:
 
 ### O que NÃO mudar
 [Partes do paper que estão bem e não devem ser tocadas na revisão teórica. Ser explícito para evitar overhaul desnecessário.]
+
+---
+
+## 10. Síntese: insight, mecanismo, corte
+
+Este bloco é obrigatório. Ele destila todo o diagnóstico em três declarações concisas que o autor pode usar como bússola durante a revisão.
+
+### Core insight (uma frase)
+> [A contribuição central do paper — o que ele mostra que não sabíamos — em uma única frase declarativa. Se não for possível formular em uma frase, o paper provavelmente tenta fazer coisas demais.]
+
+### O mecanismo simples mas interessante
+> [Em 2-3 frases em linguagem simples: o que causa o quê, através de qual canal, e por que esse canal é surpreendente ou não-óbvio. Sem jargão. Se o mecanismo não pode ser explicado assim, o framing precisa de mais trabalho.]
+
+### O que deve ser removido do framing
+[Lista concreta do que o paper inclui no enquadramento teórico mas que deveria ser cortado ou movido:]
+- [Elemento a remover] — [por quê: dilui o argumento / pertence a outro paper / não se conecta ao mecanismo central / etc.]
+- ...
+
+**Regra**: Se esta lista estiver vazia, volte à Seção 3 e reconsidere. Quase todo paper tem framing demais.
 ```
 
 ---

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Adaptive Codex Router"
+  short_description: "Escolhe modelo, esforço e velocidade por tarefa"
+  default_prompt: "Use $adaptive-codex-router para escolher e justificar a configuração ideal para esta tarefa."
